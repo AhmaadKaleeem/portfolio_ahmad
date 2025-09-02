@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark transition-colors duration-300;
+  }
+
+  ::selection {
+    @apply bg-primary-light text-white dark:bg-primary-dark;
+  }
+  
+  /* Scroll bar styling */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-background-light dark:bg-background-dark;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-light/50 dark:bg-primary-dark/50 rounded-full;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-light/80 dark:bg-primary-dark/80;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-8;
+  }
+  
+  /* Hero-only neon effect */
+  .hero-neon-text {
+    @apply text-primary-light dark:text-primary-dark;
+    text-shadow: 0 0 5px theme('colors.primary.light'), 
+                 0 0 15px theme('colors.primary.light');
+  }
+  
+  .button-primary {
+    @apply bg-primary-light dark:bg-primary-dark text-black dark:text-black font-medium py-3 px-6 rounded-md transition-all duration-300 shadow-md hover:shadow-lg;
+  }
+  
+  .button-secondary {
+    @apply bg-transparent border-2 border-primary-light dark:border-primary-dark text-primary-light dark:text-primary-dark font-medium py-3 px-6 rounded-md transition-all duration-300;
+  }
+  
+  .card {
+    @apply bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-500 border border-white/10;
+  }
+  
+  .input-field {
+    @apply w-full border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-black/20 backdrop-blur-sm rounded-md py-3 px-4 focus:outline-none transition-all duration-300;
+  }
+  
+  .input-field:focus {
+    @apply border-primary-light dark:border-primary-dark;
+  }
+}
+/* Add these styles to fix inconsistent section spacing */
+section {
+  padding: 4rem 0;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 216, 255, 0.1);
+}
+
+/* Only the hero section should have full height */
+#hero {
+  height: 100vh;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  border-bottom: none;
+}
+
+/* Additional style to prevent section content from causing inconsistent heights */
+.section-content {
+  padding: 2rem 0;
+}
+
+/* Add these at the end of your existing CSS */
+
+/* Light Theme Enhancements */
+:root {
+  --light-background: #f8fafc;
+  --light-text: #1e293b;
+  --light-primary: #3b82f6;
+  --light-primary-hover: #2563eb;
+  --light-secondary: #f0f9ff;
+  --light-accent: #0ea5e9;
+  --light-border: #e2e8f0;
+  
+  --dark-background: #000000;
+  --dark-text: #ffffff;
+  --dark-primary: #00d8ff;
+  --dark-primary-hover: #00b8d4;
+  --dark-secondary: #0f172a;
+  --dark-accent: #0ea5e9;
+  --dark-border: rgba(0, 216, 255, 0.2);
+}
+
+/* Base theme styles */
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light theme card styles */
+.light .bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-color: var(--light-border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.light section {
+  border-bottom-color: var(--light-border);
+}
+
+.light h2, .light h3, .light h4 {
+  color: var(--light-text);
+}
+
+.light .text-cyan-400 {
+  color: var(--light-primary);
+}
+
+.light .bg-cyan-500 {
+  background-color: var(--light-primary);
+}
+
+.light .border-cyan-500\/20 {
+  border-color: var(--light-border);
+}
+
+/* Button styles in light mode */
+.light a.bg-cyan-500 {
+  background-color: var(--light-primary);
+  color: white;
+}
+
+.light a.bg-cyan-500:hover {
+  background-color: var(--light-primary-hover);
+}
+
+.light a.border-cyan-500 {
+  border-color: var(--light-primary);
+  color: var(--light-primary);
+}
+
+.light a.border-cyan-500:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+/* Navbar extra enhancements */
+.nav-link {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover {
+  transform: scale(1.5);
+  font-weight: 500;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}

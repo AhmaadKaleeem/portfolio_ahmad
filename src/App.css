@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-gray-900 text-white;
+    background-image: radial-gradient(circle at 50% 50%, rgba(0, 216, 255, 0.03), rgba(0, 0, 0, 0));
+  }
+  
+  ::selection {
+    @apply bg-cyan-500 text-black;
+  }
+  
+  /* Scroll bar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-900;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-cyan-600/50 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-cyan-600/80;
+  }
+}
+
+/* Prevent section content from overlapping */
+section {
+  overflow: hidden;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Fix hero section to ensure it doesn't overflow */
+#hero {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensure sections don't mix with each other */
+section + section {
+  position: relative;
+}
+
+/* Create clear visual separation between sections */
+section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0, 216, 255, 0.3), transparent);
+}
