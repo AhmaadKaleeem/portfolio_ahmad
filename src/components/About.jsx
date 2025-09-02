@@ -57,7 +57,7 @@ const About = () => {
                   {/* This would be your profile image */}
                   <div className="absolute inset-0 flex items-center justify-center text-6xl font-bold text-white/10">
                     <div className="relative flex items-center justify-center w-full h-full">
-                      <img src="/profile.jpg" alt="Ahmad Kaleem Bhatti Pic" className="absolute inset-0 w-full h-full object-cover z-20" /> 
+                      <img src="profile.jpg" alt="Ahmad Kaleem Bhatti Pic" className="absolute inset-0 w-full h-full object-cover z-20" /> 
                     </div>
                   </div>
                 </div>
