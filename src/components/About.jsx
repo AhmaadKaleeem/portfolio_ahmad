@@ -19,7 +19,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" ref={ref} className="py-20 md:py-32 relative overflow-hidden">
+    <section id="about" ref={ref} className="pt-20 pb-8 md:pt-26 md:pb-8 relative overflow-hidden">
       {/* Subtle background decoration */}
       <div className="absolute top-0 right-0 w-[30vw] h-[30vw] rounded-full bg-primary-light/5 dark:bg-primary-dark/5 blur-3xl -z-10"></div>
       <div className="absolute bottom-0 left-0 w-[20vw] h-[20vw] rounded-full bg-secondary-light/5 dark:bg-secondary-dark/5 blur-3xl -z-10"></div>

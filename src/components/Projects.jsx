@@ -149,7 +149,7 @@ const Projects = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
         >
           <a
-            href="https://github.com/AhmadKaleem"
+            href="https://github.com/AhmaadKaleeem"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center space-x-2 py-3 px-8 bg-transparent border border-cyan-500 text-cyan-400 font-medium rounded-md hover:bg-cyan-500/10 transition-all duration-300"
