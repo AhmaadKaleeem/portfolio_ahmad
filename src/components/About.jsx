@@ -187,7 +187,7 @@ const About = () => {
                 transition={{ delay: 0.7 }}
               >
                 <motion.a
-                  href="/resume.pdf"
+                  href="resume.pdf"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center px-6 py-3 rounded-md bg-primary-light dark:bg-primary-dark text-white font-medium transition-all duration-300"
