@@ -33,7 +33,6 @@ const Hero = () => {
     hidden: { 
       opacity: 0,
       y: 50,
-      // Removed rotateX which can cause performance issues
     },
     visible: {
       opacity: 1,
@@ -53,7 +52,10 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="h-screen w-full flex items-center justify-center overflow-hidden">
+    <section 
+      id="hero" 
+      className="min-h-screen w-full flex items-center justify-center overflow-hidden pt-20 sm:pt-24"
+    >
       {/* Background grid with reduced complexity */}
       <div className="absolute inset-0 grid grid-cols-6 grid-rows-6 pointer-events-none opacity-10">
         {Array.from({ length: 6 }).map((_, i) => (
@@ -64,59 +66,62 @@ const Hero = () => {
         ))}
       </div>
       
-      {/* Hero content */}
-      <div className="container mx-auto px-4 relative z-10 text-center">
+      {/* Hero content - Added mt-12 for mobile to ensure content starts below navbar */}
+      <div className="container mx-auto px-4 relative z-10 text-center mt-12 sm:mt-0 max-w-6xl">
         <div className="flex flex-col items-center justify-center">
-          {/* Animated First Name */}
-          <motion.div
-            className="overflow-hidden mb-0 sm:mb-2"
-            variants={letterContainerVariants}
-            initial="hidden"
-            animate="visible"
-            custom={1}
-          >
-            {firstName.split("").map((letter, index) => (
-              <motion.span 
-                key={`first-${index}`}
-                className={`text-5xl md:text-7xl lg:text-8xl font-bold inline-block ${
-                  isLightTheme ? 'text-gray-900' : 'text-white'
-                }`}
-                variants={letterVariants}
-              >
-                {letter === " " ? "\u00A0" : letter}
-              </motion.span>
-            ))}
-          </motion.div>
-          
-          {/* Animated Last Name with glow effect */}
-          <motion.div
-            className="overflow-hidden mb-12"
-            variants={letterContainerVariants}
-            initial="hidden"
-            animate="visible"
-            custom={1.5}
-          >
-            {lastName.split("").map((letter, index) => (
-              <motion.span 
-                key={`last-${index}`}
-                className={`text-5xl md:text-7xl lg:text-8xl font-bold inline-block ${
-                  isLightTheme ? 'text-blue-600' : 'text-cyan-400'
-                }`}
-                variants={letterVariants}
-                style={{ 
-                  textShadow: isLightTheme 
-                    ? '0 0 5px rgba(37, 99, 235, 0.7), 0 0 10px rgba(37, 99, 235, 0.5)' 
-                    : '0 0 5px #00d8ff, 0 0 10px #00d8ff'
-                }}
-              >
-                {letter === " " ? "\u00A0" : letter}
-              </motion.span>
-            ))}
-          </motion.div>
+          {/* Name container with better overflow handling and spacing for mobile */}
+          <div className="w-full overflow-visible">
+            {/* Animated First Name - Fixed layout */}
+            <motion.div
+              className="mb-0 sm:mb-2 flex justify-center flex-wrap"
+              variants={letterContainerVariants}
+              initial="hidden"
+              animate="visible"
+              custom={1}
+            >
+              {firstName.split("").map((letter, index) => (
+                <motion.span 
+                  key={`first-${index}`}
+                  className={`text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold ${
+                    isLightTheme ? 'text-gray-900' : 'text-white'
+                  } mx-[-0.05em]`} /* Slight negative margin to adjust spacing */
+                  variants={letterVariants}
+                >
+                  {letter === " " ? "\u00A0" : letter}
+                </motion.span>
+              ))}
+            </motion.div>
+            
+            {/* Animated Last Name with glow effect - Fixed layout */}
+            <motion.div
+              className="mb-8 sm:mb-12 flex justify-center flex-wrap"
+              variants={letterContainerVariants}
+              initial="hidden"
+              animate="visible"
+              custom={1.5}
+            >
+              {lastName.split("").map((letter, index) => (
+                <motion.span 
+                  key={`last-${index}`}
+                  className={`text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold ${
+                    isLightTheme ? 'text-blue-600' : 'text-cyan-400'
+                  } mx-[-0.05em]`} /* Slight negative margin to adjust spacing */
+                  variants={letterVariants}
+                  style={{ 
+                    textShadow: isLightTheme 
+                      ? '0 0 5px rgba(37, 99, 235, 0.7), 0 0 10px rgba(37, 99, 235, 0.5)' 
+                      : '0 0 5px #00d8ff, 0 0 10px #00d8ff'
+                  }}
+                >
+                  {letter === " " ? "\u00A0" : letter}
+                </motion.span>
+              ))}
+            </motion.div>
+          </div>
           
           {/* Tagline */}
           <motion.div 
-            className="mb-16"
+            className="mb-10 sm:mb-16 px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ 
               opacity: showContent ? 1 : 0, 
@@ -124,7 +129,7 @@ const Hero = () => {
             }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <h2 className={`text-xl sm:text-2xl md:text-3xl font-medium ${
+            <h2 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium ${
               isLightTheme ? 'text-gray-700' : 'text-gray-300'
             }`}>
               Computer Science Student | Aspiring AI & Machine Learning Engineer
@@ -147,7 +152,7 @@ const Hero = () => {
                 isLightTheme 
                   ? 'bg-blue-600 hover:bg-blue-700' 
                   : 'bg-cyan-500 hover:bg-cyan-600'
-              } text-black font-medium rounded-md transition-all duration-300`}
+              } text-white font-medium rounded-md transition-all duration-300`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -170,7 +175,7 @@ const Hero = () => {
           
           {/* Scroll Indicator */}
           <motion.div 
-            className="mt-6"
+            className="mt-6 mb-10"
             initial={{ opacity: 0, y: -10 }}
             animate={{ 
               opacity: showContent ? 1 : 0, 
