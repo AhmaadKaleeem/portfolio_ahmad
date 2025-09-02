@@ -65,7 +65,7 @@ const Navbar = () => {
               whileHover={{ scale: 1.2, rotate: 5 }}
               style={{ textShadow: '0 0 10px rgba(0, 216, 255, 0.7)' }}
             >
-              AK
+              AKB
             </motion.div>
           </Link>
 
