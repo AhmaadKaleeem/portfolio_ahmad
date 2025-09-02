@@ -49,7 +49,7 @@ const Hero = () => {
   // Handle resume view safely
   const handleResumeClick = (e) => {
     e.preventDefault();
-    window.open('/resume.pdf', '_blank', 'noopener,noreferrer');
+    window.open('resume.pdf', '_blank', 'noopener,noreferrer');
   };
 
   return (
